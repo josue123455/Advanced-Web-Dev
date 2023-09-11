@@ -1,0 +1,203 @@
+<!-- for this project I installed extension live server to run in browser and HTML 5 preview-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- external use of linking to tueats.css-->
+    <link rel="stylesheet" type="text/css" href="tueats.css"/>
+    <title>TUEats this is the page for the tueats.html file</title>
+</head>
+<body>
+<img src="Towson_Tigers_logo.svg.png" alt="Towson_Tigers_logo">
+<h1>Welcome to TUEats </h1>
+
+
+<!-- added the form action and wrapped sign up fieldset into it and moved the button from the bottom to at the end of the signup field set since the menu isn't really user interactive other than
+the link with the form action it does not move onto tueats_completed if the required fields are not completed.-->
+<form action="tueats_completed.html" method="GET" id="signup-form">
+    <!-- placed the fieldset in the body of the html file-->
+    <fieldset>
+        <legend>Sign Up</legend>
+        <!-- my fieldsets--><!--textfeilds for the username, email, referral code, password --><!--all are required except for the referral code-->
+        <!-- for the names of the label I left them exactly as what the text asked for in the tueasts.html portion of the assigment-->
+
+        <!-- I know the max length for the password is 24 but if i use 24 then the alert won't go off so i made it 25 -->
+        <label for="username">Username - </label>
+        <input type="text" id="username" name="username" minlength="6" maxlength="25" required ><br><br>
+
+        <label for="email_address">Email Address - </label>
+        <input type="text" id="email_address" name="email_address" required ><br><br>
+
+        <label for="referral_code">Referral Code - </label>
+        <input type="text" id="referral_code" name="referral_code" ><br><br>
+
+        <label for="password">Password - </label>
+        <input type="text" id="password" name="password" required ><br><br>
+
+        <label for="password_verify">Password Verify - </label>
+        <input type="text" id="password_verify" name="password_verify" required ><br><br>
+
+        <!-- there might be a better way of doing this but my personal knowledge I just left the initial checkbox label blank and added
+            one to the end of the input so that its on the right-->
+        <label for="checkbox"></label>
+        <input type="checkbox" id="checkbox" name="checkbox"> Sign up for our newsletter?<br><br>
+
+    </fieldset>
+    <button id="submit-button" type="submit">Submit</button>
+</form>
+<!-- this is the fieldset that will contain the 4x4 table including the table headers.-->
+
+<fieldset>
+    <legend>Menu</legend>
+
+    <table>
+
+        <caption> Menu is subject to change, please visit our main site for more information <a href="https://www.towson.edu/">Towson Website</a> </caption>
+        <!--Table headers so they use th and made the first one a blank like the assignment-->
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Calories</th>
+        </tr>
+        <!-- row 2 these use td as table data -->
+        <tr>
+            <td>item 1</td>
+            <td>Burger</td>
+            <td>$8</td>
+            <td>550</td>
+        </tr>
+        <!-- row 3 the colnswpan did not due it but the rowspan did it and I did 2 because I needed to span the row below it-->
+        <tr>
+            <td>item 2</td>
+            <td>Mozzarella Sticks</td>
+            <td>$7</td>
+            <td rowspan="2">400</td>
+
+        </tr>
+        <!-- row 4 no td for the calories since its being rowspan from the table above-->
+        <tr>
+            <td>item 3</td>
+            <td>Fries</td>
+            <td>$4</td>
+
+        </tr>
+    </table>
+</fieldset>
+<!-- My originial thought process but the issue was when the button was disabled due to referal code then the passwords match it would allow the user to conitnue so i figured i must glue them toghether and thats what i did
+<script>
+    // Function to check for the 3 referal codes and block the user
+    function referral_code() {
+        var referral_codeField = document.getElementById("referral_code");
+        var submitButton = document.getElementById("submit-button");
+        // sets the referal code input values to lowercase for case insensative and diff vartiations of the 3 wont work and block the submit button
+        var inputValue = referral_codeField.value.toLowerCase();
+
+
+        if (inputValue === "tucis") {
+
+            alert("This referral code is invalid")
+            submitButton.disabled = true;
+         
+        }
+        else if (inputValue === "bogo") {
+
+        alert("This referral code is invalid")
+        submitButton.disabled = true;
+
+        }
+        else if (inputValue === "eatgood") {
+
+        alert("This referral code is invalid")
+        submitButton.disabled = true;
+
+        }
+        
+        else {
+
+            submitButton.disabled = false;
+        }
+    }
+
+    // Add an event listener to the "Password Verify" input field to check passwords on input
+    var referral_codeField = document.getElementById("referral_code");
+    referral_codeField.addEventListener("input", referral_code);
+
+</script>
+
+<script>
+    // Function to check if the passwords match
+    function password() {
+        var passwordField = document.getElementById("password");
+        var passwordVerifyField = document.getElementById("password_verify");
+        var submitButton = document.getElementById("submit-button");
+        // if passwords value and type match then all good
+        if (passwordField.value === passwordVerifyField.value) {
+            //the submit button is good active like normal
+            submitButton.disabled = false;
+        } else {
+            // if the passwords are not the same then alert the user and disable the submit button
+            alert("en-sure passwords match")
+            submitButton.disabled = true;
+        }
+    }
+
+    // Add an event listener to the "Password Verify" input field to check passwords on input
+    var passwordVerifyField = document.getElementById("password_verify");
+    passwordVerifyField.addEventListener("input", password);
+
+
+</script>
+-->
+
+<script>
+function form_verify(){
+    var referral_codeField = document.getElementById("referral_code");
+    var inputValue = referral_codeField.value.toLowerCase();
+    var passwordField = document.getElementById("password");
+    var passwordVerifyField = document.getElementById("password_verify");
+    var usernameField = document.getElementById("username");
+    var username_min_Length = 6;
+    var username_max_Length = 24;
+    var submitButton = document.getElementById("submit-button");
+
+    if (inputValue === "tucis" || inputValue === "bogo" || inputValue === "eatgood" || passwordField.value !== passwordVerifyField.value || usernameField.value.length < username_min_Length ||usernameField.value.length > username_max_Length) {
+        submitButton.disabled = true;
+        if (inputValue === "tucis" || inputValue === "bogo" || inputValue === "eatgood") {
+            alert("This referral code is invalid");
+        }
+        if (passwordField.value !== passwordVerifyField.value) {
+            alert("Ensure passwords match");
+        }
+        if (usernameField.value.length < username_min_Length) {
+            alert("Username must be at least 6 characters long");
+        }
+        if (usernameField.value.length > username_max_Length) {
+            alert("Username must be less than 24 characters long");
+        }
+    }
+
+    else {
+        submitButton.disabled = false;
+    }
+
+}
+    var referral_codeField = document.getElementById("referral_code");
+    var passwordVerifyField = document.getElementById("password_verify");
+    var usernameField = document.getElementById("username");
+
+    referral_codeField.addEventListener("input", form_verify);
+    passwordVerifyField.addEventListener("input", form_verify);
+    // for the username field I had to use the blur after a Google search cause the input was causing the alert to go off everytime the user would input each character
+    usernameField.addEventListener("blur", form_verify);
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

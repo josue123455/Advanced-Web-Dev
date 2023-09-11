@@ -1,0 +1,35 @@
+/* the rule groups everything together, the selector what i want to work with from the HTML file, 
+statement {}, inside the the statment{} property what specificaly i want to change, 
+Then : the actual Value */
+
+th {
+
+    font-weight: bold;
+    text-align: center;
+
+}
+td {
+    text-align: center;
+}
+table {
+    width: 75%;
+    border: 1px solid black;
+    background-color: #808080;
+}
+
+h1 {
+    color: #FFBB00;
+
+}
+
+
+
+a:hover {
+    color: #FFBB00; /* Link color when hovered (red) */
+    
+}
+
+
+
+
+/* refrence/cite for the towson image https://en.wikipedia.org/wiki/Towson_Tigers*/ 

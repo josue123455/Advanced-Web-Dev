@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tueats_Completed</title>
+</head>
+<body>
+<h1> <span id="greeting"></span></h1>
+<div id="Hello"></div>
+<h2>"Your Account Information:"</h2>
+<Ul id="account-info">
+    <!-- The user's account information will be displayed here -->
+</Ul>
+<script>
+    // Parse the query parameters from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Retrieve user's information from the query parameters
+    const username = urlParams.get("username");
+    const email = urlParams.get("email_address");
+    const referral_code = urlParams.get("referral_code");
+    const password = urlParams.get("password");
+    const passwordVerify = urlParams.get("password_verify");
+    const checkbox = urlParams.get("checkbox");
+
+    // Display a greeting and the username
+    const greeting = document.getElementById("greeting");
+    greeting.textContent = `Hello: ${username}`;
+
+    // Display the user's account information in an unordered list
+    const accountInfoList = document.getElementById("account-info");
+    accountInfoList.innerHTML = `
+            <li>Username: ${username}</li>
+            <li>Email: ${email}</li>
+            <li>Referal_code: ${referral_code} ${referral_code ? ` (free meal)` : "No referral code entered"}</li>
+            <li>Password: ${password}</li>
+            <li>Password Verify: ${passwordVerify}</li>
+            <li>Newsletter Signup: ${checkbox === "on" ? "Yes" : "No"}</li>
+        `;
+
+</script>
+
+
+
+</body>
+</html>
+
+
+
